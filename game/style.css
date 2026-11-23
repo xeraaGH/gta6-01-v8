@@ -1,0 +1,46 @@
+/* Bahía Azul — HUD + screens */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0e14; font-family: 'Segoe UI', Arial, sans-serif; color: #f2f2f2; }
+#game, #game canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+.hidden { display: none !important; }
+
+#hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; text-shadow: 0 1px 3px rgba(0,0,0,.8); }
+#hud-top { position: absolute; top: 14px; right: 18px; display: flex; gap: 16px; align-items: center; font-weight: 700; font-size: 20px; }
+#clock { background: rgba(0,0,0,.55); padding: 4px 12px; border-radius: 6px; letter-spacing: 1px; }
+#cash { color: #7dd36a; background: rgba(0,0,0,.55); padding: 4px 12px; border-radius: 6px; }
+#stars { font-size: 24px; letter-spacing: 2px; }
+#stars .star { color: rgba(255,255,255,.25); }
+#stars .star.on { color: #ffd24d; }
+#hud-left { position: absolute; top: 14px; left: 18px; width: 250px; }
+.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.bar-label { font-size: 11px; font-weight: 700; width: 44px; }
+.bar { flex: 1; height: 12px; background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.35); border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #2ecc71, #7dd36a); transition: width .2s; }
+.bar-fill.low { background: linear-gradient(90deg, #e74c3c, #ff6a5a); }
+.bar-fill.armor { background: linear-gradient(90deg, #4da6ff, #7db8ff); }
+#district { font-size: 22px; font-weight: 800; margin-top: 6px; }
+#standing, #mission-count { font-size: 13px; color: #d8d8d8; }
+#hud-right { position: absolute; right: 18px; bottom: 18px; text-align: right; }
+#minimap { border: 3px solid rgba(255,255,255,.75); border-radius: 50%; background: #101418; box-shadow: 0 0 0 4px rgba(0,0,0,.4); }
+#speed { font-size: 30px; font-weight: 800; margin-top: 6px; }
+#weapon, #radio { font-size: 14px; font-weight: 700; color: #ffd24d; }
+#objective { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); max-width: 640px; background: rgba(0,0,0,.62); border-left: 4px solid #ffd24d; padding: 10px 16px; border-radius: 4px; font-size: 15px; line-height: 1.4; }
+#crosshair { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-size: 26px; color: rgba(255,255,255,.85); }
+#damage-flash { position: fixed; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(255,0,0,.55) 100%); opacity: 0; transition: opacity .12s; pointer-events: none; }
+#controls-hint { position: absolute; left: 18px; bottom: 14px; font-size: 11px; color: rgba(255,255,255,.65); max-width: 300px; line-height: 1.5; }
+
+.screen { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center; background: rgba(4, 8, 16, .55); backdrop-filter: blur(2px); }
+.panel { max-width: 640px; width: 92%; background: linear-gradient(160deg, rgba(10,20,38,.94), rgba(16,32,54,.94)); border: 1px solid rgba(255,210,77,.5); border-radius: 14px; padding: 34px 40px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
+.panel h1 { font-size: 64px; letter-spacing: 4px; font-weight: 900; color: #fff; }
+.panel h1 span { color: #4da6ff; }
+.panel h2 { font-size: 42px; letter-spacing: 3px; }
+.tagline { color: #ffd24d; font-size: 18px; font-weight: 700; margin: 6px 0 14px; }
+.story { font-size: 15px; line-height: 1.6; color: #d5dce6; margin-bottom: 16px; }
+.features { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 22px; }
+.features span { background: rgba(77,166,255,.18); border: 1px solid rgba(77,166,255,.5); padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+.big-btn { pointer-events: auto; cursor: pointer; display: inline-block; background: linear-gradient(180deg, #ffd24d, #e8a91c); color: #1a1a1a; border: none; font-size: 19px; font-weight: 800; letter-spacing: 1px; padding: 14px 42px; border-radius: 8px; margin: 6px; box-shadow: 0 4px 0 #a67c00; }
+.big-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #a67c00; }
+.big-btn.secondary { background: linear-gradient(180deg, #5a6a7a, #3a4a5a); color: #fff; box-shadow: 0 4px 0 #222e3a; }
+.hint { font-size: 12px; color: #9aa8b8; margin-top: 12px; }
+.wasted { color: #ff5a4a; }
+.busted { color: #4da6ff; }

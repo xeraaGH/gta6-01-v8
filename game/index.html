@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bahía Azul — Open-World Crime Game</title>
+<link rel="stylesheet" href="style.css">
+<script src="vendor/three.min.js"></script>
+</head>
+<body>
+<div id="game"></div>
+
+<!-- HUD -->
+<div id="hud" class="hidden-until-play">
+  <div id="hud-top">
+    <div id="clock">08:00</div>
+    <div id="cash">$250</div>
+    <div id="stars"></div>
+  </div>
+  <div id="hud-left">
+    <div class="bar-row"><span class="bar-label">HP</span><div class="bar"><div id="health" class="bar-fill" style="width:100%"></div></div></div>
+    <div class="bar-row"><span class="bar-label">ARMOR</span><div class="bar"><div id="armor" class="bar-fill armor" style="width:0%"></div></div></div>
+    <div id="district">Old Harbor</div>
+    <div id="standing">Standing 0</div>
+    <div id="mission-count">Missions 0/10 · Packages 0/20</div>
+  </div>
+  <div id="hud-right">
+    <canvas id="minimap" width="220" height="220"></canvas>
+    <div id="speed">0 mph</div>
+    <div id="weapon">PISTOL 48</div>
+    <div id="radio">Radio off</div>
+  </div>
+  <div id="objective">Welcome to Bahía Azul.</div>
+  <div id="crosshair">+</div>
+  <div id="damage-flash"></div>
+  <div id="controls-hint">WASD move/drive · E enter car · Click shoot · V punch · 1/2/3 weapons · M mission · N race · T taxi · Q switch lead · Space ability · G radio · P pause</div>
+</div>
+
+<!-- Title screen -->
+<div id="title-screen" class="screen">
+  <div class="panel">
+    <h1>BAHÍA <span>AZUL</span></h1>
+    <p class="tagline">A coastal city that owes you money.</p>
+    <p class="story">Lucía "Luz" Vega came home to Bahía Azul to find her brother's crew
+      wiped out by the Vipers. Marcus "Mack" Kane drives like the devil and
+      owes everybody. Together they take the city back — ten jobs, three
+      street races, twenty hidden packages, and every cop in the bay.</p>
+    <div class="features">
+      <span>6 districts</span><span>10 missions</span><span>3 races</span>
+      <span>Taxi fares</span><span>20 packages</span><span>Wanted 1–5★</span>
+      <span>Day / night</span><span>3 radio stations</span>
+    </div>
+    <button data-action="start" class="big-btn">▶ START GAME</button>
+    <p class="hint">Enter or click Start. WASD to move and drive, E to steal a car, M for a job.</p>
+  </div>
+</div>
+
+<!-- Pause -->
+<div id="pause-screen" class="screen hidden">
+  <div class="panel">
+    <h2>PAUSED</h2>
+    <p>Bahía Azul waits for no one — except now.</p>
+    <button data-action="resume" class="big-btn">RESUME</button>
+    <button data-action="restart" class="big-btn secondary">RESTART</button>
+  </div>
+</div>
+
+<!-- Wasted -->
+<div id="wasted-screen" class="screen hidden">
+  <div class="panel dark">
+    <h2 class="wasted">WASTED</h2>
+    <p>The clinic patched you up. It cost you 10% of your cash.</p>
+    <button data-action="respawn" class="big-btn">GET BACK UP</button>
+  </div>
+</div>
+
+<!-- Busted -->
+<div id="busted-screen" class="screen hidden">
+  <div class="panel dark">
+    <h2 class="busted">BUSTED</h2>
+    <p>The Bahía Azul PD booked you. Bail cost 10% of your cash.</p>
+    <button data-action="respawn" class="big-btn">WALK FREE</button>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
